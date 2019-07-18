@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<link rel="stylesheet" type="text/css" href="maps/bootstrap-tagsinput.css" />
+	
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+	
+  </head>
+
+  <body style="overflow-x:hidden;">
+  
+  <div class="row">
+	  <div class="col-12">
+		<select multiple data-role="tagsinput">
+		</select>
+	  </div>
+  </div>
+  
+  <div class="row h-100">
+  <div class="col-9">
+    <div id="map"></div>
+  </div>
+
+	<div class="col-3 h-100">
+	<input type="text" name="datetimes" id="daterange" style="width: 95%"/>
+	<div style="height:95%;overflow:auto;">
+		<table id="myTable">
+		</table>
+	</div>
+	</div>
+	
+  </div>
+
+	<script>
+	$('#daterange').daterangepicker({
+		timePicker: true,
+		startDate: moment('2010-01-01'),
+		endDate: moment().startOf('hour'),
+		locale: {
+		  format: 'DD/MM/YYYY hh:mm A'
+		}
+	});
+	
+	
+	$('#daterange').on('apply.daterangepicker', function(ev, picker) {
+	  updateAllData(picker.startDate, picker.endDate);
+	});
+	</script>
+
+
+    <script type='text/javascript' src='maps/bootstrap-tagsinput.js'></script>
+    <script type='text/javascript' src='maps/markers.js'></script>
+    <script type='text/javascript' src='maps/leaf-demo.js'></script>
+	
+  </body>
+</html>
